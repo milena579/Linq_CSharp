@@ -12,3 +12,18 @@ c:\Users\disrct\Desktop\C#\Tarde\Aula 2\obj\Debug\net9.0\refint\Aula 2.dll
 c:\Users\disrct\Desktop\C#\Tarde\Aula 2\obj\Debug\net9.0\Aula 2.pdb
 C:\Users\disrct\Desktop\C#\Tarde\Aula 2\obj\Debug\net9.0\Aula 2.genruntimeconfig.cache
 C:\Users\disrct\Desktop\C#\Tarde\Aula 2\obj\Debug\net9.0\ref\Aula 2.dll
+C:\Users\disrct\Desktop\Linq_CSharp\bin\Debug\net9.0\Aula 2.exe
+C:\Users\disrct\Desktop\Linq_CSharp\bin\Debug\net9.0\Aula 2.deps.json
+C:\Users\disrct\Desktop\Linq_CSharp\bin\Debug\net9.0\Aula 2.runtimeconfig.json
+C:\Users\disrct\Desktop\Linq_CSharp\bin\Debug\net9.0\Aula 2.dll
+C:\Users\disrct\Desktop\Linq_CSharp\bin\Debug\net9.0\Aula 2.pdb
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\Aula 2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\Aula 2.AssemblyInfoInputs.cache
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\Aula 2.AssemblyInfo.cs
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\Aula 2.csproj.CoreCompileInputs.cache
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\Aula 2.sourcelink.json
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\Aula 2.dll
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\refint\Aula 2.dll
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\Aula 2.pdb
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\Aula 2.genruntimeconfig.cache
+C:\Users\disrct\Desktop\Linq_CSharp\obj\Debug\net9.0\ref\Aula 2.dll
