@@ -48,17 +48,36 @@ var query4 = from prof in uni.Professores
             orderby fim.Alunos descending 
             select fim;
 
-var query5 = from aluno in uni.Alunos
-            select new { aluno.Nome, aluno.Idade, Professores = (from materia in aluno.Matriculas
-                join turma in uni.Turmas on materia equals turma.Id
-                join prof in uni.Professores on turma.ProfessorId equals prof.Id 
-                select prof.Salario
-            ).ToList().Sum()};
+var query5 =
+    from a in uni.Alunos
+    from t in uni.Turmas
+    from p in uni.Professores
+    where a.Matriculas.Contains(t.Id)
+    where t.ProfessorId == p.Id
+
+    from a2 in uni.Alunos
+    from t2 in uni.Turmas
+    from p2 in uni.Professores
+    where a2.Matriculas.Contains(t2.Id)
+    where t2.ProfessorId == p2.Id
+    
+    where p.Id == p2.Id
+    group new { a2.Nome, p.Id, p.Salario } by new { a.Nome, p.Id, p.Salario} into g
+    let count = g.Count()
+    let custo = g.Key.Salario / count
+    select new { g.Key.Nome, custo } into item
+    
+    group item by item.Nome into aluno
+    select new {
+        Aluno = aluno.Key,
+        Custo = aluno.Sum(x => x.custo)
+    };
+
               
-// WriteLine("Os departamentos, em ordem alfabética, com o número de disciplinas.");
-// foreach(var departamento in query1){
-//     WriteLine("Departamento: " + departamento.name + " - " + "N° Disciplinas: " + departamento.NumDisciplinas);
-// }
+WriteLine("Os departamentos, em ordem alfabética, com o número de disciplinas.");
+foreach(var departamento in query1){
+    WriteLine("Departamento: " + departamento.name + " - " + "N° Disciplinas: " + departamento.NumDisciplinas);
+}
 
 WriteLine("Liste os alunos e suas idades com seus respectivos professores.");
 foreach(var aluno in query2){
@@ -66,16 +85,17 @@ foreach(var aluno in query2){
 }
 
 
-// WriteLine("Liste os professores e seus salários com seus respectivos alunos.");
-// foreach(var prof in query3){
-//     WriteLine("Professor: " + prof.Nome + " - Salário: " + prof.Salario + " - Alunos: " + string.Join("; ", prof.Alunos));
-// }
+WriteLine("Liste os professores e seus salários com seus respectivos alunos.");
+foreach(var prof in query3){
+    WriteLine("Professor: " + prof.Nome + " - Salário: " + prof.Salario + " - Alunos: " + string.Join("; ", prof.Alunos));
+}
 
+WriteLine("-----------------------------------------------------------------------------");
 
-// WriteLine("Top 5 Professores com mais alunos da universidade.");
-// foreach(var prof in query4.Take(5)){
-//     WriteLine("Professor: " + prof.Nome + " - Salário: " + prof.Salario + " - Qtd Alunos: " + string.Join("; ", prof.Alunos));
-// }
+WriteLine("Top 5 Professores com mais alunos da universidade.");
+foreach(var prof in query4.Take(5)){
+    WriteLine("Professor: " + prof.Nome + " - Salário: " + prof.Salario + " - Qtd Alunos: " + string.Join("; ", prof.Alunos));
+}
 
 WriteLine(
     """
@@ -83,8 +103,8 @@ WriteLine(
     divido entre seus colegas de classe. Liste os alunos e seus respectivos custos.
     """
 );
-foreach(var aluno in query5.Take(5)){
-    WriteLine("Aluno: " + aluno.Nome + " - Salário Profs: " + aluno.Professores);
+foreach(var aluno in query5){
+    WriteLine("Aluno: " + aluno.Aluno + " - Custo aluno: " + aluno.Custo);
 }
 
 ReadKey(true);
